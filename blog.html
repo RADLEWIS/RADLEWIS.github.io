@@ -3,44 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog - My Site</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <title>Blog | Yong Yan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
   <nav class="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">My Site</a>
+      <a href="./index.html" class="nav-logo">Y.</a>
       <div class="nav-links">
-        <a href="/blog.html">Blog</a>
-        <a href="/awards.html">Awards</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./awards.html">Awards</a>
       </div>
     </div>
   </nav>
 
   <main class="container">
-    <h1>Blog</h1>
+    <section class="hero-intro">
+      <h1 class="hero-name">Blog</h1>
+      <div class="hero-rule"></div>
+    </section>
 
     <div class="post-list">
-
-      <!-- 示例文章卡片 -->
-      <a href="/posts/hello-world.html" class="post-card">
-        <span class="post-date">2026-06-19</span>
-        <h3 class="post-title">Hello World</h3>
-        <p class="post-summary">This is my first blog post.</p>
+      <a href="./posts/statistics-paper/index.html" class="post-card">
+        <span class="post-date">2026-06-21</span>
+        <h3 class="post-title">概率论如何稳定深度神经网络的训练</h3>
+        <p class="post-summary">探讨 Xavier、Kaiming、正交初始化及 muP 等方法背后的概率论原理，并附带在 CIFAR-10 上的深度实验复现。</p>
       </a>
 
-      <!-- TODO 6: 照着上面的格式，再加一张文章卡片 -->
-      <!-- 你可以改标题、日期、摘要，href 先随便写一个 -->
+      <!-- 示例文章卡片 -->
+      <a href="./posts/hello-world.html" class="post-card">
+        <span class="post-date">2026-06-19</span>
+        <h3 class="post-title">Hello World</h3>
+        <p class="post-summary">This is my first blog post. Welcome to my personal space.</p>
+      </a>
 
-
+      <!-- 你可以按照这个格式添加更多文章 -->
     </div>
   </main>
 
   <footer class="footer">
-    <p>&copy; 2026 Your Name.</p>
+    <p>&copy; 2026 Yong Yan.</p>
   </footer>
 
-  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="./js/main.js"></script>
 </body>
 </html>

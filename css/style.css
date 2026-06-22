@@ -1,9 +1,9 @@
 :root {
   --color-bg: #ffffff;
   --color-bg-warm: #f8f4ef;
-  --color-text: #1a1815;
-  --color-text-secondary: #8a8078;
-  --color-accent: #9b6a3c;
+  --color-text: #000000;
+  --color-text-secondary: #5c3817;
+  --color-accent: #3a240f;
   --color-border: #e8e1d8;
   --max-width: 760px;
   --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
