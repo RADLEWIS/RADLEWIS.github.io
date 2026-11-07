@@ -10,6 +10,10 @@
   --color-nav-bg: rgba(255, 255, 255, 0.9);
   --color-selection: #e7d4ad;
   --color-selection-text: #34281d;
+  --color-selection-heading: #dfba81;
+  --color-selection-heading-text: #36240f;
+  --color-selection-link: #c4ded4;
+  --color-selection-link-text: #173b34;
   --max-width: 760px;
   --font-body: "Source Serif 4", Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
   --font-display: "Playfair Display", Georgia, "Noto Serif SC", "Songti SC", serif;
@@ -28,6 +32,10 @@
   --color-nav-bg: rgba(20, 18, 16, 0.9);
   --color-selection: #6b5535;
   --color-selection-text: #fff4df;
+  --color-selection-heading: #9b713d;
+  --color-selection-heading-text: #fff5e7;
+  --color-selection-link: #315c56;
+  --color-selection-link-text: #edfff7;
   color-scheme: dark;
 }
 
@@ -41,6 +49,17 @@
   background: var(--color-selection);
   color: var(--color-selection-text);
   text-shadow: none;
+}
+
+:is(h1, h2, h3, .card-title)::selection {
+  background: var(--color-selection-heading);
+  color: var(--color-selection-heading-text);
+}
+
+a::selection,
+a *::selection {
+  background: var(--color-selection-link);
+  color: var(--color-selection-link-text);
 }
 
 html {
