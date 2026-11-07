@@ -1,6 +1,31 @@
 // Theme is applied early by an inline script in <head> (avoids a white flash).
 const root = document.documentElement
 
+// Use the text cursor only while the mouse is selecting page content.
+let selectingPointer = null
+const finishTextSelection = () => {
+  selectingPointer = null
+  root.classList.remove('is-selecting-text')
+}
+document.addEventListener('pointerdown', (e) => {
+  if (e.pointerType !== 'mouse' || e.button !== 0) return
+  if (!e.target.closest('main, .sections-wrap')) return
+  if (e.target.closest('a, button, summary, input, textarea, select, [contenteditable]')) return
+  selectingPointer = e.pointerId
+})
+document.addEventListener('selectionchange', () => {
+  if (selectingPointer === null) return
+  const selection = window.getSelection()
+  root.classList.toggle('is-selecting-text', !!selection && !selection.isCollapsed)
+})
+document.addEventListener('pointermove', (e) => {
+  if (e.pointerId === selectingPointer && !(e.buttons & 1)) finishTextSelection()
+}, { passive: true })
+document.addEventListener('pointerup', finishTextSelection)
+document.addEventListener('pointercancel', finishTextSelection)
+document.addEventListener('dragstart', finishTextSelection)
+window.addEventListener('blur', finishTextSelection)
+
 const ICONS = {
   moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
   sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',

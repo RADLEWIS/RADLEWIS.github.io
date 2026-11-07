@@ -76,12 +76,18 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s, color 0.3s;
+  cursor: default;
+}
+
+html.is-selecting-text body {
+  cursor: text;
 }
 
 a {
   color: var(--color-accent);
   text-decoration: none;
   transition: color 0.2s;
+  cursor: pointer;
 }
 
 a:hover {
