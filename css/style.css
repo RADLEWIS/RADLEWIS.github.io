@@ -77,7 +77,7 @@ a:hover {
 
 /* ---- Nav ---- */
 .nav {
-  --nav-panel-width: clamp(9rem, 12vw, 10.5rem);
+  --nav-panel-width: clamp(10rem, 12vw, 11rem);
   --nav-gutter: max(0px, calc((100vw - var(--max-width)) / 2));
   --nav-inset-top: clamp(1.5rem, 5vh, 3.5rem);
   position: fixed;
@@ -92,21 +92,11 @@ a:hover {
   max-height: calc(100dvh - var(--nav-inset-top) - var(--nav-inset-top));
   overflow-y: auto;
   scrollbar-width: thin;
-  padding: 1rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.25rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1.25rem;
-  background: var(--color-nav-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 14px;
-  box-shadow: 0 4px 28px rgba(0,0,0,0.05);
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.nav:hover .nav-inner {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.09);
 }
 
 .nav-toggle {
@@ -131,7 +121,7 @@ a:hover {
 }
 
 .nav-logo:hover img {
-  transform: rotate(-6deg) scale(1.06);
+  transform: scale(1.03);
 }
 
 .nav-links {
@@ -150,11 +140,9 @@ a:hover {
   position: absolute;
   top: var(--active-top, 0px);
   left: -1px;
-  right: 0;
+  width: 1px;
   height: var(--active-height, 0px);
-  border-left: 2px solid var(--color-accent);
-  border-radius: 0 5px 5px 0;
-  background: linear-gradient(90deg, var(--color-accent-soft), transparent);
+  background: var(--color-accent);
   opacity: var(--active-opacity, 0);
   pointer-events: none;
   z-index: -1;
@@ -173,6 +161,10 @@ a:hover {
 .nav-links a:hover,
 .nav-links a.is-active {
   color: var(--color-accent);
+}
+
+.nav-links a.is-active {
+  color: var(--color-text);
 }
 
 .nav-links a:hover {
@@ -945,6 +937,9 @@ a:hover {
     align-items: center;
     gap: 0.5rem;
     padding: 0.6rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
   }
 
   .nav-toggle {
