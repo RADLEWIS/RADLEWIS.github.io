@@ -8,12 +8,12 @@
   --color-accent-soft: rgba(148, 80, 28, 0.1);
   --color-border: #d9d0c5;
   --color-nav-bg: rgba(255, 255, 255, 0.9);
-  --color-selection: #e7d4ad;
-  --color-selection-text: #34281d;
-  --color-selection-heading: #dfba81;
-  --color-selection-heading-text: #36240f;
-  --color-selection-link: #c4ded4;
-  --color-selection-link-text: #173b34;
+  --color-selection: #edc16b;
+  --color-selection-text: #2f210f;
+  --color-selection-heading: #c8893e;
+  --color-selection-heading-text: #271b0d;
+  --color-selection-link: #79b6a6;
+  --color-selection-link-text: #132e28;
   --max-width: 760px;
   --font-body: "Source Serif 4", Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
   --font-display: "Playfair Display", Georgia, "Noto Serif SC", "Songti SC", serif;
@@ -30,12 +30,12 @@
   --color-accent-soft: rgba(228, 175, 118, 0.12);
   --color-border: #453c34;
   --color-nav-bg: rgba(20, 18, 16, 0.9);
-  --color-selection: #6b5535;
-  --color-selection-text: #fff4df;
-  --color-selection-heading: #9b713d;
-  --color-selection-heading-text: #fff5e7;
-  --color-selection-link: #315c56;
-  --color-selection-link-text: #edfff7;
+  --color-selection: #b48942;
+  --color-selection-text: #17110a;
+  --color-selection-heading: #e0b068;
+  --color-selection-heading-text: #21170e;
+  --color-selection-link: #68a996;
+  --color-selection-link-text: #0f231d;
   color-scheme: dark;
 }
 
