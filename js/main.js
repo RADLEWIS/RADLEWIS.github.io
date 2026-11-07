@@ -43,36 +43,130 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 floatBtns.append(topBtn, themeBtn)
 document.body.appendChild(floatBtns)
 
-// ---- Nav: solid background after scrolling past the banner ----
 const nav = document.querySelector('.nav')
-const banner = document.querySelector('.hero-banner')
+const navToggle = document.querySelector('.nav-toggle')
+const bannerPicture = document.querySelector('.hero-banner picture')
+const sectionsInner = document.querySelector('.sections-inner')
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
+const closeNav = () => {
+  nav.classList.remove('is-open')
+  navToggle.setAttribute('aria-expanded', 'false')
+  navToggle.setAttribute('aria-label', 'Open navigation')
+}
+navToggle.addEventListener('click', () => {
+  const open = nav.classList.toggle('is-open')
+  navToggle.setAttribute('aria-expanded', String(open))
+  navToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation')
+  updateNavMarker()
+})
+document.addEventListener('click', (e) => {
+  if (!nav.contains(e.target)) closeNav()
+})
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+    closeNav()
+    navToggle.focus()
+  }
+})
+
+// ---- Scroll details ----
 const onScroll = () => {
   const y = window.scrollY
-  if (nav && banner) {
-    nav.classList.toggle('is-scrolled', y > banner.offsetHeight - nav.offsetHeight)
-  }
   topBtn.classList.toggle('is-visible', y > 600)
+  if (bannerPicture && !reduceMotion.matches) {
+    const offset = Math.min(y, bannerPicture.offsetHeight) * 0.12
+    bannerPicture.style.transform = `translate3d(0, ${offset}px, 0)`
+  }
+  if (sectionsInner && window.innerWidth > 1100) {
+    const contentTop = sectionsInner.getBoundingClientRect().top + parseFloat(getComputedStyle(sectionsInner).paddingTop)
+    const inset = parseFloat(getComputedStyle(nav).top)
+    const bottomLimit = Math.max(inset, window.innerHeight - nav.offsetHeight - inset)
+    const top = Math.min(Math.max(inset, contentTop), bottomLimit)
+    nav.style.transform = `translate3d(0, ${top - inset}px, 0)`
+  } else {
+    nav.style.removeProperty('transform')
+  }
 }
 window.addEventListener('scroll', onScroll, { passive: true })
+window.addEventListener('resize', onScroll)
+window.addEventListener('load', onScroll)
 onScroll()
 
 // ---- Nav: highlight current page / section ----
 const navLinks = [...document.querySelectorAll('.nav-links a')]
+const navLinksContainer = document.querySelector('.nav-links')
+function updateNavMarker() {
+  const active = navLinks.find((a) => a.classList.contains('is-active'))
+  navLinksContainer.style.setProperty('--active-opacity', active?.offsetHeight ? '1' : '0')
+  if (!active?.offsetHeight) return
+  navLinksContainer.style.setProperty('--active-top', `${active.offsetTop}px`)
+  navLinksContainer.style.setProperty('--active-height', `${active.offsetHeight}px`)
+}
 const page = document.body.dataset.page
 navLinks.forEach((a) => {
   if (a.dataset.page && a.dataset.page === page) a.classList.add('is-active')
+  a.addEventListener('click', closeNav)
 })
+window.addEventListener('resize', updateNavMarker)
+document.fonts.ready.then(() => {
+  onScroll()
+  updateNavMarker()
+})
+updateNavMarker()
 
 const sectionLinks = navLinks.filter((a) => a.hash && document.querySelector(a.hash))
 if (sectionLinks.length) {
-  const setActive = (id) => {
-    sectionLinks.forEach((a) => a.classList.toggle('is-active', a.hash === `#${id}`))
+  let clickedSection = null
+  const updateActiveSection = () => {
+    const marker = Math.min(120, window.innerHeight * 0.2)
+    let active = null
+    for (const a of sectionLinks) {
+      if (document.querySelector(a.hash).getBoundingClientRect().top <= marker) active = a
+    }
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+      active = sectionLinks.at(-1)
+    }
+    if (clickedSection) active = clickedSection
+    sectionLinks.forEach((a) => {
+      a.classList.toggle('is-active', a === active)
+      if (a === active) a.setAttribute('aria-current', 'location')
+      else a.removeAttribute('aria-current')
+    })
+    updateNavMarker()
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id) })
-  }, { rootMargin: '-40% 0px -55% 0px' })
-  sectionLinks.forEach((a) => observer.observe(document.querySelector(a.hash)))
+  window.addEventListener('scroll', updateActiveSection, { passive: true })
+  window.addEventListener('resize', updateActiveSection)
+  window.addEventListener('load', updateActiveSection)
+  sectionLinks.forEach((a) => a.addEventListener('click', () => {
+    clickedSection = a
+    updateActiveSection()
+  }))
+  const followReading = () => { clickedSection = null }
+  window.addEventListener('wheel', followReading, { passive: true })
+  window.addEventListener('touchmove', followReading, { passive: true })
+  document.addEventListener('pointerdown', (e) => {
+    if (!nav.contains(e.target)) followReading()
+  })
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(e.key)) followReading()
+  })
+  updateActiveSection()
+}
+
+// ---- Sections enter gently as they come into view ----
+if (!reduceMotion.matches) {
+  const reveal = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return
+      entry.target.classList.remove('is-pending')
+      reveal.unobserve(entry.target)
+    })
+  }, { rootMargin: '0px 0px 40px 0px' })
+  document.querySelectorAll('.section').forEach((section) => {
+    section.classList.add('is-pending')
+    reveal.observe(section)
+  })
 }
 
 // ---- Email: assembled at runtime to keep it away from naive scrapers ----

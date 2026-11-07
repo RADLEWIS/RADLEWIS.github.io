@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>概率论如何稳定深度神经网络的训练 | Yong Yan</title>
-  <meta name="description" content="探讨 Xavier、Kaiming、正交初始化及 muP 等方法背后的概率论原理，并附带在 CIFAR-10 上的实验复现。">
+  <meta name="description" content="Xavier、Kaiming、正交初始化与 muP 背后的概率论原理。">
   <meta property="og:type" content="article">
   <meta property="og:title" content="概率论如何稳定深度神经网络的训练">
-  <meta property="og:description" content="Xavier、Kaiming、正交初始化与 muP 背后的概率论原理，附 CIFAR-10 实验复现。">
-  <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+  <meta property="og:description" content="Xavier、Kaiming、正交初始化与 muP 背后的概率论原理。">
+  <meta property="og:url" content="https://radlewis.github.io/posts/statistics-paper/">
+  <meta property="og:image" content="https://radlewis.github.io/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/webp" href="../../images/avatar.webp">
   <script>
     (() => {
       const t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
@@ -46,12 +49,13 @@
 </head>
 <body class="page-plain" data-page="blog">
 
-  <nav class="nav">
+  <nav class="nav" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="../../index.html" class="nav-logo">Y.</a>
-      <div class="nav-links">
+      <a href="../../index.html" class="nav-logo" aria-label="Home"><img src="../../images/avatar.webp" alt="" width="32" height="32"></a>
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span></button>
+      <div class="nav-links" id="site-navigation">
         <a href="../../index.html">Home</a>
-        <a href="../../blog.html" data-page="blog">Blog</a>
+        <a href="../../blog.html" data-page="blog">Blogs</a>
       </div>
     </div>
   </nav>
@@ -62,8 +66,6 @@
         <div class="post-meta">
           <span class="post-date">2026-06-21</span>
           <span>&middot; 约 18 分钟阅读</span>
-          <span class="tag">DL Theory</span>
-          <span class="tag">Initialization</span>
         </div>
         <h1>概率论如何稳定深度神经网络的训练</h1>
         <div class="hero-rule"></div>

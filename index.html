@@ -8,9 +8,10 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Yong Yan">
   <meta property="og:description" content="Undergraduate @ Tsinghua University. LLM post-training, efficient RL, ML systems.">
-  <meta property="og:image" content="./images/hero-1200.webp">
+  <meta property="og:url" content="https://radlewis.github.io/">
+  <meta property="og:image" content="https://radlewis.github.io/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/svg+xml" href="./images/favicon.svg">
+  <link rel="icon" type="image/webp" href="./images/avatar.webp">
   <script>
     (() => {
       const t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
@@ -24,14 +25,19 @@
 </head>
 <body class="has-hero" data-page="home">
 
-  <nav class="nav">
+  <nav class="nav" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="./" class="nav-logo" aria-label="Home">Y.</a>
-      <div class="nav-links">
+      <a href="./" class="nav-logo" aria-label="Home"><img src="./images/avatar.webp" alt="" width="32" height="32"></a>
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span></button>
+      <div class="nav-links" id="site-navigation">
         <a href="#news">News</a>
-        <a href="#research">Research</a>
+        <a href="#research">Research Experience</a>
+        <a href="#publications">Research Publications</a>
+        <a href="#education">Education</a>
         <a href="#awards">Awards</a>
-        <a href="./blog.html" data-page="blog">Blog</a>
+        <a href="#posts">Blogs</a>
+        <a href="#leadership">Student Leadership</a>
+        <a href="#misc">Misc.</a>
       </div>
     </div>
   </nav>
@@ -56,7 +62,7 @@
           <p class="hero-subtitle">Undergraduate @ Tsinghua University</p>
           <p class="hero-desc">
             B.Eng. student (Class of 2028) in Xinya College and the Department of Computer Science and Technology.
-            I'm interested in <strong>post-training for LLMs</strong> (especially efficient RL algorithms),
+            I'm interested in <strong>LLM post-training and efficient RL</strong>,
             <strong>ML systems</strong>, and <strong>multimodal LLMs</strong>.
           </p>
           <div class="icon-links">
@@ -69,22 +75,26 @@
               GitHub
             </a>
             <!-- TODO: 以下为占位链接，填好 href 后去掉 is-placeholder 即可 -->
-            <a href="#" class="is-placeholder" title="Coming soon">
+            <a href="#" class="is-placeholder" aria-disabled="true" tabindex="-1">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l4 2.18v.01A7 7 0 0 0 12 22a7 7 0 0 0 7-10.81L23 9 12 3zm0 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/></svg>
               Google Scholar
             </a>
-            <a href="#" class="is-placeholder" title="Coming soon">
+            <a href="#" class="is-placeholder" aria-disabled="true" tabindex="-1">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78L17.75 3zm-1.08 16.2h1.7L7.4 4.73H5.58l11.09 14.47z"/></svg>
               Twitter / X
             </a>
-            <a href="#" class="is-placeholder" title="Coming soon">
+            <a href="#" class="is-placeholder" aria-disabled="true" tabindex="-1">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zm7 0h3.8v1.54h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.05c0-1.2-.02-2.75-1.68-2.75-1.68 0-1.94 1.31-1.94 2.66V21h-4V9.75z"/></svg>
               LinkedIn
             </a>
           </div>
         </div>
-        <!-- TODO: 换成个人照片：<div class="avatar"><img src="./images/avatar.jpg" alt="Yong Yan"></div> -->
-        <div class="avatar" aria-hidden="true">YY</div>
+        <div class="avatar">
+          <picture>
+            <source type="image/webp" srcset="./images/avatar.webp">
+            <img src="./images/avatar.jpg" alt="Yong Yan's avatar" width="400" height="400">
+          </picture>
+        </div>
       </div>
     </section>
 
@@ -96,11 +106,10 @@
       <section class="section" id="news">
         <h2>News</h2>
         <ul class="news-list">
-          <li><span class="news-date">2026.10</span><span>Received the National Scholarship (top 2%).</span></li>
-          <li><span class="news-date">2026.06</span><span>Posted a blog on <a href="./posts/statistics-paper/index.html">how probability theory stabilizes deep network training</a> (in Chinese).</span></li>
+          <li><span class="news-date">2026.11</span><span>Received the National Scholarship (top 2%).</span></li>
           <li><span class="news-date">2026.06</span><span>Became Vice President of the Sci &amp; Tech Association, Dept. of CS.</span></li>
           <li><span class="news-date">2026.05</span><span>Selected for the Xinghuo (Spark) Innovative Talent Program (40 / 3000).</span></li>
-          <li><span class="news-date">2025.10</span><span>Joined Zhipu AI / THUKEG as a research intern working on GLM post-training.</span></li>
+          <li><span class="news-date">2025.10</span><span>Joined Zhipu AI / THUKEG as a research intern.</span></li>
         </ul>
       </section>
 
@@ -108,31 +117,46 @@
         <h2>Research Experience</h2>
         <div class="card">
           <div class="card-header">
+            <span class="card-title">Institute for AI Industry Research (AIR), Tsinghua University</span>
+            <span class="card-meta">2026.07 &ndash; Present</span>
+          </div>
+          <p class="card-subtitle">Research Intern</p>
+          <p class="card-desc">Advised by <a href="https://zhouh.github.io/" target="_blank" rel="noopener">Prof. Hao Zhou</a>. Mentored by <a href="https://c7w.tech/" target="_blank" rel="noopener">Huan-ang Gao</a>.</p>
+          <p class="card-desc">Efficient RL and on-policy distillation.</p>
+        </div>
+        <div class="card">
+          <div class="card-header">
             <span class="card-title">Zhipu AI / THUKEG</span>
             <span class="card-meta">2025.10 &ndash; 2026.07</span>
           </div>
-          <p class="card-subtitle">Research Intern &middot; LLM Post-training</p>
-          <!-- TODO (optional): Advised by ... -->
-          <div class="card-desc">
-            <ul>
-              <li>Contributed to post-training of GLM-5 / 5.1 / 5.2 in the cybersecurity domain.</li>
-              <li>Named contributor in the GLM-5 technical report.</li>
-            </ul>
-          </div>
+          <p class="card-subtitle">Research Intern</p>
+          <p class="card-desc">Mentored by <a href="https://github.com/Sengxian" target="_blank" rel="noopener">Aohan Zeng</a>.</p>
+          <p class="card-desc">GLM-5 / 5.1 / 5.2 post-training for cybersecurity.</p>
         </div>
       </section>
 
       <section class="section" id="publications">
-        <h2>Publications &amp; Reports</h2>
+        <h2>Research Publications</h2>
         <div class="card">
           <div class="card-header">
-            <span class="card-title">GLM-5 Technical Report</span>
-            <span class="card-meta">2026</span>
+            <span class="card-title">Open-MOPD: Diagnosing and Fixing Capability Imbalance in Multi-Teacher On-Policy Distillation</span>
+            <span class="card-meta">2026.08</span>
           </div>
-          <p class="card-desc">GLM Team, Zhipu AI &amp; Tsinghua University. <span class="badge">Contributor</span></p>
-          <!-- TODO: 填上技术报告的链接后去掉 is-placeholder -->
+          <p class="card-desc">Huan-ang Gao, Haohan Chi, <strong>Yong Yan</strong>, Shiyuan Feng, Hanlin Wu, Zheng Jiang, Bingxiang He, Wei-Ying Ma, Ya-Qin Zhang, Hao Zhou.</p>
           <div class="pub-links">
-            <a href="#" class="is-placeholder">arXiv</a>
+            <a href="https://arxiv.org/abs/2608.19098" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://arxiv.org/pdf/2608.19098" target="_blank" rel="noopener">PDF</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">GLM-5: from Vibe Coding to Agentic Engineering</span>
+            <span class="card-meta">2026.02</span>
+          </div>
+          <p class="card-desc">GLM Team, Zhipu AI &amp; Tsinghua University.</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2602.15763" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://arxiv.org/pdf/2602.15763" target="_blank" rel="noopener">PDF</a>
           </div>
         </div>
       </section>
@@ -146,6 +170,44 @@
           </div>
           <p class="card-subtitle">B.Eng. in Computer Science and Technology</p>
           <p class="card-desc">Department of Computer Science and Technology &amp; Xinya College.</p>
+          <p class="card-desc">GPA: <strong>3.93</strong> / 4.00 (top 10%)</p>
+        </div>
+        <div class="courses">
+          <p class="courses-title" id="courses-title">Selected Courses</p>
+          <div class="courses-scroll" role="region" aria-labelledby="courses-title" tabindex="0">
+            <div class="course-group">
+              <p class="course-group-title">Mathematics</p>
+              <ul class="course-list">
+                <li><span>Linear Algebra</span><span class="grade grade-top">A+</span></li>
+                <li><span>Advanced Linear Algebra</span><span class="grade grade-top">A+</span></li>
+                <li><span>Calculus A (1)</span><span class="grade">A</span></li>
+                <li><span>Calculus A (2)</span><span class="grade">A</span></li>
+                <li><span>Probability and Statistics</span><span class="grade">A</span></li>
+                <li><span>Introduction to Complex Analysis</span><span class="grade">A</span></li>
+              </ul>
+            </div>
+            <div class="course-group">
+              <p class="course-group-title">Computer Science</p>
+              <ul class="course-list">
+                <li><span>Introduction to Artificial Intelligence</span><span class="grade grade-top">A+</span></li>
+                <li><span>Fundamentals of Programming</span><span class="grade grade-top">A+</span></li>
+                <li><span>Object-Oriented Programming</span><span class="grade grade-top">A+</span></li>
+                <li><span>Programming Practice</span><span class="grade">A</span></li>
+                <li><span>Software Engineering</span><span class="grade">A</span></li>
+                <li><span>Compiler Principles</span><span class="grade">A</span></li>
+                <li><span>Digital Logic Circuits</span><span class="grade">A</span></li>
+                <li><span>Fundamentals of Computer Graphics</span><span class="grade">A</span></li>
+                <li><span>High Performance Computing</span><span class="grade">A</span></li>
+              </ul>
+            </div>
+            <div class="course-group">
+              <p class="course-group-title">Physics</p>
+              <ul class="course-list">
+                <li><span>University Physics B (2)</span><span class="grade grade-top">A+</span></li>
+                <li><span>University Physics B (1)</span><span class="grade">A</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -153,45 +215,44 @@
         <h2>Awards</h2>
         <div class="card">
           <div class="card-header">
+            <span class="card-title">National Scholarship</span>
+            <span class="card-meta">2026.11</span>
+          </div>
+          <p class="card-desc">RMB 10,000 &middot; Top 2%, Tsinghua University.</p>
+        </div>
+        <div class="card">
+          <div class="card-header">
             <span class="card-title">Xinghuo (Spark) Innovative Talent Program, 20th Cohort</span>
-            <span class="card-meta">2026</span>
+            <span class="card-meta">2026.05</span>
           </div>
           <p class="card-desc">Selected 40 out of 3000, Tsinghua University.</p>
         </div>
         <div class="card">
           <div class="card-header">
-            <span class="card-title">National Scholarship</span>
-            <span class="card-meta">2026</span>
-          </div>
-          <p class="card-desc">Overall Excellence Scholarship, CNY 10,000. Top 2%, Tsinghua University.</p>
-        </div>
-        <div class="card">
-          <div class="card-header">
             <span class="card-title">Philobiblion Scholarship</span>
-            <span class="card-meta">2025</span>
+            <span class="card-meta">2025.11</span>
           </div>
-          <p class="card-desc">Overall Excellence Scholarship, CNY 10,000. Top 10%, Tsinghua University.</p>
+          <p class="card-desc">RMB 10,000 &middot; Top 10%, Tsinghua University.</p>
         </div>
         <div class="card">
           <div class="card-header">
             <span class="card-title">Second-Class Freshman Scholarship</span>
-            <span class="card-meta">2024</span>
+            <span class="card-meta">2024.09</span>
           </div>
           <p class="card-desc">Tsinghua University.</p>
         </div>
       </section>
 
       <section class="section" id="posts">
-        <h2>Recent Posts <a class="section-more" href="./blog.html">All posts &rarr;</a></h2>
+        <h2>Blogs <a class="section-more" href="./blog.html">All blogs &rarr;</a></h2>
         <div class="post-list">
           <a href="./posts/statistics-paper/index.html" class="post-card">
             <div class="post-meta">
               <span class="post-date">2026-06-21</span>
-              <span>&middot; 18 min read &middot; 中文</span>
-              <span class="tag">DL Theory</span>
+              <span>&middot; 18 min read</span>
             </div>
             <h3 class="post-title">概率论如何稳定深度神经网络的训练</h3>
-            <p class="post-summary">Xavier、Kaiming、正交初始化与 muP 背后的概率论原理，附 CIFAR-10 实验复现。</p>
+            <p class="post-summary">Xavier、Kaiming、正交初始化与 muP 背后的概率论原理。</p>
           </a>
         </div>
       </section>
@@ -214,18 +275,6 @@
         </div>
       </section>
 
-      <section class="section" id="skills">
-        <h2>Skills</h2>
-        <div class="tags">
-          <span class="tag">C++</span>
-          <span class="tag">Python</span>
-          <span class="tag">Rust</span>
-          <span class="tag">PyTorch</span>
-          <span class="tag">LLM post-training pipelines</span>
-          <span class="tag">Async RL frameworks</span>
-        </div>
-      </section>
-
       <section class="section" id="misc">
         <h2>Misc.</h2>
         <details class="misc-item">
@@ -244,17 +293,13 @@
           <summary>Music <span class="misc-hint">RADWIMPS</span></summary>
           <p class="card-desc">RADWIMPS is my favorite band &mdash; their music is filled with sincerity and profound emotion. My favorite song is <em>Nandemonaiya</em> (&#12300;&#12394;&#12435;&#12391;&#12418;&#12394;&#12356;&#12420;&#12301;), the ending theme of <em>Your Name</em>. I also enjoy Joker Xue, Jay Chou, Vae Xu, and Stefanie Sun.</p>
         </details>
-        <details class="misc-item">
-          <summary>Games <span class="misc-hint">Genshin Impact, Identity V, &hellip;</span></summary>
-          <p class="card-desc">I enjoy <em>Genshin Impact</em>, <em>Identity V</em>, and <em>Honor of Kings</em>. Recently exploring more on Steam.</p>
-        </details>
       </section>
 
     </div>
   </div>
 
   <footer class="footer">
-    <p>&copy; 2026 Yong Yan<span class="footer-sep">&middot;</span>Last updated Oct 2026</p>
+    <p>&copy; 2026 Yong Yan<span class="footer-sep">&middot;</span>Last updated Nov 2026</p>
   </footer>
 
   <script type="module" src="./js/main.js"></script>
