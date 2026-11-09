@@ -8,6 +8,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         blog: resolve(__dirname, 'blog.html'),
+        'feishu-calendar-sync': resolve(__dirname, 'feishu-calendar-sync/index.html'),
+        'feishu-calendar-privacy': resolve(__dirname, 'feishu-calendar-sync/privacy.html'),
         'statistics-paper': resolve(__dirname, 'posts/statistics-paper/index.html'),
       },
     },
