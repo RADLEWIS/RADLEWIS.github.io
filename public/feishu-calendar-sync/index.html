@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Feishu Calendar Sync is a personal utility that copies Feishu calendar events into a dedicated Google calendar.">
+  <title>Feishu Calendar Sync</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav aria-label="Navigation"><a href="./" aria-current="page">Overview</a><a href="privacy.html">Privacy policy</a><a href="https://github.com/RADLEWIS">Contact the developer</a></nav>
+  <h1>Feishu Calendar Sync</h1>
+  <p class="lead">A personal utility by RADLEWIS that keeps Feishu events visible in a dedicated Google calendar.</p>
+  <h2>What it does</h2>
+  <p>The utility reads the owner's Feishu calendar using CalDAV and copies event titles, start and end times, descriptions, and locations into a Google calendar named “飞书（自动同步）”. It runs on the owner's server approximately every five minutes.</p>
+  <p>Changes flow from Feishu to Google Calendar. Events are edited in Feishu. The utility copies events starting within the past 30 days and the coming year, expands recurring events into individual occurrences, and updates or removes managed copies when the source changes within that window.</p>
+  <h2>Google account access</h2>
+  <p>The owner authorizes access through Google's sign-in and consent screens. The utility requests only <code>https://www.googleapis.com/auth/calendar.app.created</code>, which permits it to create and manage calendars created by the application. It does not request access to Gmail messages or other existing calendars.</p>
+  <h2>Personal use</h2>
+  <p>This is a private integration for the developer's own accounts. There is no public sign-up or hosted synchronization service. This website provides information about the application; calendar data and credentials are not uploaded to this website.</p>
+  <p>Read the <a href="privacy.html">privacy policy</a> for details about data use, storage, and removal.</p>
+  <footer>Maintained by <a href="https://github.com/RADLEWIS">RADLEWIS</a>. This is an independent utility and is not affiliated with Google or Feishu.</footer>
+</main>
+</body>
+</html>

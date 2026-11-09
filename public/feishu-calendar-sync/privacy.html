@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy policy for the Feishu Calendar Sync personal calendar utility.">
+  <title>Privacy Policy · Feishu Calendar Sync</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav aria-label="Navigation"><a href="./">Overview</a><a href="privacy.html" aria-current="page">Privacy policy</a><a href="https://github.com/RADLEWIS">Contact the developer</a></nav>
+  <h1>Privacy policy</h1>
+  <p class="meta">Feishu Calendar Sync · Effective November 9, 2026</p>
+  <h2>Operator and purpose</h2>
+  <p>RADLEWIS operates Feishu Calendar Sync as a personal integration between the operator's own Feishu and Google accounts. Data is used solely to copy and maintain calendar events from Feishu in a dedicated Google calendar.</p>
+  <h2>Data accessed</h2>
+  <p>The utility reads Feishu CalDAV event data, including event identifiers, titles, start and end times, recurrence rules, descriptions, locations, and cancellation information. It uses a Google OAuth access token and refresh token to create and manage an application-created calendar.</p>
+  <p>Within that Google calendar, it reads copied events and synchronization metadata to identify duplicates and changes. It writes event titles, times, descriptions, and locations, plus identifiers and content hashes used for synchronization. Descriptions may contain meeting links or other information entered in the source event. Attendee lists, invitation responses, and attachments are not copied as separate fields. Gmail messages are not accessed.</p>
+  <h2>Data use and sharing</h2>
+  <p>Copied event information is sent to Google Calendar at the owner's request. Feishu and Google process requests under their respective policies. The utility does not sell calendar data, use it for advertising, share it with other application users, or use it to train AI models. There is no public data collection endpoint on this website.</p>
+  <p>Feishu Calendar Sync's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements.</p>
+  <h2>Storage and security</h2>
+  <p>The utility runs on the owner's server. CalDAV credentials and Google OAuth tokens are stored in files with access restricted to the owner's server account. Requests to Feishu and Google use HTTPS. Operational logs record synchronization timestamps, event counts, and results; the application does not intentionally log credentials, event titles, or descriptions. Copied events and synchronization metadata are stored in the dedicated Google calendar.</p>
+  <h2>Retention and removal</h2>
+  <p>Credentials remain on the owner's server until the owner removes them. Copied events remain in Google Calendar until the utility removes them following source changes within its synchronization window, or the owner deletes them. Previously copied historical events outside the synchronization window are retained.</p>
+  <p>The owner can stop the server's synchronization timer, revoke the application's access in <a href="https://myaccount.google.com/connections">Google Account connections</a>, remove the credential files, and delete the dedicated Google calendar. Revoking access alone does not delete events already copied into Google Calendar.</p>
+  <h2>This website</h2>
+  <p>These information pages do not set analytics cookies or contain tracking scripts. GitHub Pages hosts the website and may record visitors' IP addresses for security purposes, as described in the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</p>
+  <h2>Contact and changes</h2>
+  <p>For questions about this application or its data practices, contact the developer through the public <a href="https://github.com/RADLEWIS">RADLEWIS GitHub profile</a>. Changes to this policy will be published on this page with an updated effective date.</p>
+  <footer><a href="./">Return to Feishu Calendar Sync</a></footer>
+</main>
+</body>
+</html>
